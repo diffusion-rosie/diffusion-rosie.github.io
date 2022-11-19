@@ -105,9 +105,8 @@
                 <div class="col-md-4 col-md-offset-4 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-                            <a href="assets/palm_saycan.pdf">
+                            <a href="assets/rt1.pdf">
                             <image src="img/paper_small.png" height="60px">
-                            <image src="img/new.png" height="20px" class="imtip">
                                 <h4><strong>Paper</strong></h4>
                             </a>
                         </li>
@@ -121,47 +120,21 @@
                         <li>
                             <a href="https://ai.googleblog.com/2022/08/towards-helpful-robots-grounding.html">
                             <image src="img/google-ai-blog-small.png" height="60px">
-                                <image src="img/new.png" height="20px" class="imtip">
                                 <h4><strong>Blogpost</strong></h4>
                             </a>
                         </li>
                          <li>
                             <a href="https://github.com/google-research/google-research/tree/master/saycan">
                             <image src="img/github.png" height="60px">
-                                <image src="img/new.png" height="20px" class="imtip">
                                 <h4><strong>Code</strong></h4>
-                            </a>
-                            <li>
-                            <a href="https://sites.research.google/palm-saycan">
-                            <image src="img/demo.png" height="60px">
-                                <image src="img/new.png" height="20px" class="imtip">
-                                <h4><strong>Demo</strong></h4>
-                            </a>
-                        </li> 
+                            </a>                   
                         </li> 
                     </ul>
                 </div>
         </div>
 
 
-         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-           
-                <h3>
-                    What's New
-                </h3>
-                <p class="text-justify">
-
-                  
-                <ul>
-                    <li> <font color="#5a00b4">[8/16/2022]</font> We integrated SayCan with <a href="https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html">Pathways Language Model (PaLM)</a>, and updated the results. We also added <a href="#new-capability"> new capabilities</a> including drawer manipulation, chain of thought prompting and multilingual instructions. You can see all the new results in the updated <a href="assets/palm_saycan.pdf">paper</a>.</li>
-                    <li><font color="#5a00b4">[8/16/2022]</font> Our updated results show that SayCan combined with the improved language model (PaLM), which we refer to as PaLM-SayCan, improves the <b>robotics performance</b> of the entire system compared to a previous LLM (FLAN). PaLM-SayCan chooses the correct sequence of skills 84% of the time and executes them successfully 74% of the time, reducing errors by a half compared to FLAN.  This is particularly exciting because it represents the first time we can see how an improvement in language models translates to a similar improvement in robotics.  </li>
-                    <li><font color="#5a00b4">[8/16/2022]</font> We <a href="#open-source">open-sourced</a> a version of SayCan on a simulated tabletop environment. </li>
-                    <li> [4/4/2022] Initial release of SayCan. </li>
-                </ul>
-
-            </div>
-        </div>
+   
         
 
         <div class="row">
@@ -175,17 +148,15 @@
                     Abstract
                 </h3>
                 <p class="text-justify">
-Large language models can encode a wealth of semantic knowledge about the world. Such knowledge could in principle be extremely useful to robots aiming to act upon high-level, temporally extended instructions expressed in natural language.
-However, a significant weakness of language models is that they lack contextual grounding, which makes it difficult to leverage them for decision making within a given real-world context. 
-For example, asking a language model to describe how to clean a spill might result in a reasonable narrative, but it may not be applicable to a particular agent, such as a robot, that needs to perform this task in a particular environment. 
-We propose to provide this grounding by means of pretrained behaviors, which are used to condition the model to propose natural language actions that are both feasible and contextually appropriate. 
-The robot can act as the language model’s “hands and eyes,” while the language model supplies high-level semantic knowledge about the task. 
-We show how low-level tasks can be combined with large language models so  that  the  language  model  provides  high-level  knowledge about the procedures for performing complex and temporally extended instructions,  while  value  functions  associated  with  these  tasks  provide  the  grounding necessary to connect this knowledge to a particular physical environment. 
-We evaluate our method on a number of real-world robotic tasks, where we show that this approach is capable of completing long-horizon,  abstract,  natural language instructions on a mobile manipulator. 
+By transferring knowledge from large, diverse, task-agnostic datasets, modern machine learning models can enable solving specific downstream tasks either zero-shot or with small task-specific datasets to a high level of performance. 
+While this capability has been demonstrated in other fields such as computer vision, natural language processing or speech recognition, it remains to be shown in robotics, where the generalization and fine-tuning capabilities of the models are particularly critical due to the difficulty of collecting real-world robotic data.
+We argue that one of the keys to the success of such general robotic models lies with open-ended task-agnostic training, combined with high-capacity architectures that can act as an effective “data sponge” to absorb all of the diverse, robotic data.
+In this paper, we present a model class, dubbed Robotics Transformer, that exhibits promising scalable, pre-trained model properties.
+We verify our conclusions in a comprehen-sive study of different model classes and their ability to generalize as a function of the data size, model size, and data diversity based on a large-scale data collection on real robots performing real-world tasks.
                 </p>
              <p style="text-align:center;">
         	    	<video id="v0" width="100%" playsinline autoplay muted loop controls>
-                       <source src="img/palm_saycan_teaser_compressed.mp4" type="video/mp4">
+                       <source src="img/RT1-video.mp4" type="video/mp4">
                    </video>
                 </p>
             </div>
@@ -327,55 +298,6 @@ In summary, given a high-level instruction, SayCan combines probabilities from a
             
        
 
-
-         <div class="row">
-            <div id="new-capability" class="col-md-8 col-md-offset-2">
-                <h3>
-                    <font color="#5a00b4">New Capabilities</font>
-                </h3>
-                <p>
-                <font color="#5a00b4">PaLM-SayCan enables new capabilities. First, we show that it is very easy to incorporate new skills into the system, and use drawer manipulation as an example. Second, we show by leveraging chain of thought reasoning, we are able to solve tasks that requires reasoning. Finally we show the system can work with multilingual queries, without explicitly being designed to.</font>
-            </p>
-
-                
-                <font color="#5a00b4">PaLM-SayCan is capable of integrating new skills by simply adding the new skills as options for the LLM and provide accompanying value functions and add an example in the prompt with that skill. For example, with the skills open, close, and go to the drawer, PaLM-SayCan is capable of solving tasks such as “restock the coke and pepsi into the drawer”.</font>
-
-                <p style="test-align:center;">
-                    <video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/saycan_drawer_compressed_1.mp4" type="video/mp4">
-                   </video>     
-                </p>
-
-                <font color="#5a00b4">It can also solve the task "Bring me the rice chips from the drawer". Note the robot only has one arm, so it needs to plan a long sequence to first take rice chips out of drawer and place on counter, and then pick it up again after closing the drawer. </font>
-
-                <p style="test-align:center;">
-                    <video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/saycan_drawer_compressed_2.mp4" type="video/mp4">
-                   </video>     
-                </p>
-
-                <p>
-                <font color="#5a00b4">SayCan can be integrated with recent work improving LLM reasoning, such as <a href="https://arxiv.org/abs/2201.11903">Chain of Thought</a>. With chain-of-thought prompting, PaLM-SayCan is able to handle tasks that require reasoning.</font>
-            </p>
-
-                <p style="test-align:center;">
-                    <video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/saycan_cot_compressed.mp4" type="video/mp4">
-                   </video>     
-                </p>
-
-                <p>
-                <font color="#5a00b4">While not explicitly designed to work with multilingual queries, PaLM-SayCan is able to handle them. The LLM was trained on a multilingual corpus and thus SayCan can handle multilingual queries other than English. There is almost no performance drop on planning success rate when changing the queries from English to Chinese, French and Spanish.</font>
-            </p>
-
-                <p>
-                <font color="#5a00b4">As presented herein, PaLM-SayCan only receives environmental feedback through value functions at the current decision step, meaning if a skill fails or the environment changes, the necessary feedback may not be available. Owing to the extendibility and the natural language interface, follow up work builds upon PaLM-SayCan to enable closed-loop planning by leveraging environment feedback (from e.g., success detectors, scene descriptors, or even human feedback) through an <a href="https://innermonologue.github.io/"> inner monologue </a>.</font>
-            </p>
-
-            </div>
-        </div>
-
-
          <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
@@ -392,16 +314,6 @@ In summary, given a high-level instruction, SayCan combines probabilities from a
                 </div>
             </div>
              
-        </div>
-
-
-         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    <font color="#5a00b4">Dataset</font>
-                </h3>
-               <font color="#5a00b4">SayCan dataset v0 contains mapping from natural language user instructions to one possible solution. It is available under CC BY 4.0 license. <a href="https://github.com/say-can/say-can.github.io/tree/main/data">[v0]</a></font>
-            </div>
         </div>
 
 
