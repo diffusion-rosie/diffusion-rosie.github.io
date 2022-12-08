@@ -270,7 +270,7 @@ On distractors and backgrounds, we find that RT-1 is quite robust, successfully 
                     <image src="img/multi_results.png"  class="img-responsive" height="600px">
                 </p>
                 
-                Given these results, we put everything together to evaluate the ability of RT-1 to execute long-horizon instructions in the SayCan framework. We implement two other baselines for comparison: (1) SayCan with Gato, and (2) SayCan with BC-Z. We evaluate all three policies in two real kitchens. Kitchen2 constitutes a much more challenging generalization scene than Kitchen1; the mock kitchen used to gather most of the training data was modeled after Kitchen1.
+                Given these results, we put everything together to evaluate the ability of RT-1 to execute long-horizon instructions in the <a href="https://say-can.github.io/">(PaLM-)SayCan framework</a>. We implement two other baselines for comparison: (1) SayCan with Gato, and (2) SayCan with BC-Z. We evaluate all three policies in two real kitchens. Kitchen2 constitutes a much more challenging generalization scene than Kitchen1; the mock kitchen used to gather most of the training data was modeled after Kitchen1.
                  <p style="text-align:center;">
                     <image src="img/saycan_table.png"  class="img-responsive" height="600px">
                 </p>
@@ -280,7 +280,7 @@ On distractors and backgrounds, we find that RT-1 is quite robust, successfully 
 		We see that RT-1 achieves a 67% execution success rate in Kitchen1, and is better than other baselines. Due to the generalization difficulty presented by the new unseen kitchen, the performance of SayCan with Gato and SayCan with BCZ shapely falls, while RT-1 does not show a visible drop.
 		<br><br>
 		
-		Below, we show a few example videos showing how SayCan-RT1 can be used to plan and execute ultra-long horizon tasks, with as many as 50 steps. 
+		Below, we show a few example videos showing how PaLM-SayCan-RT1 can be used to plan and execute ultra-long horizon tasks, with as many as 50 steps. 
 		The first task "Bring me the rice chips from the drawer" is executed in an office kitchen that the robot has never seen before.
 		</p>
 		<p style="test-align:center;">
