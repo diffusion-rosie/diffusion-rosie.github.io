@@ -14,20 +14,20 @@
     <!-- <base href="/"> -->
 
         <!--FACEBOOK-->
-    <meta property="og:image" content="https://say-can.github.io/img/share_image.png">
-    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="https://robotics-transformer.github.io/img/rt1-teaser.jpeg">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="682">
     <meta property="og:image:height" content="682">
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://say-can.github.io/"/>
-    <meta property="og:title" content="SayCan" />
+    <meta property="og:url" content="https://robotics-transformer.github.io/"/>
+    <meta property="og:title" content="RT-1: Robotics Transformer" />
     <meta property="og:description" content="Project page for RT-1: Robotics Transformer." />
 
         <!--TWITTER-->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SayCan" />
+    <meta name="twitter:title" content="RT-1: Robotics Transformer" />
     <meta name="twitter:description" content="Project page for RT-1: Robotics Transformer." />
-    <meta name="twitter:image" content="https://say-can.github.io/img/share_image.png" />
+    <meta name="twitter:image" content="https://robotics-transformer.github.io/img/rt1-teaser.jpeg" />
 
 
 <!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
@@ -143,7 +143,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <p style="text-align:center;">
         	    	<video id="v0" width="100%" playsinline autoplay muted loop controls>
-                       <source src="img/mosaic.mp4" type="video/mp4">
+                       <source src="img/mosaic_generalization_comp.mp4" type="video/mp4">
                    </video>
                 </p>
                 <h3>
@@ -172,7 +172,7 @@ We verify our conclusions in a comprehensive study of different model classes an
                 </h3>
                 <div class="text-center">
                     <div style="position:relative;padding-top:56.25%;">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/_JJuL5Ku_A8" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4iK8k9_xpnY" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
                     </div>
                 </div>
             </div>
@@ -281,29 +281,30 @@ On distractors and backgrounds, we find that RT-1 is quite robust, successfully 
 		<br><br>
 		
 		Below, we show a few example videos showing how SayCan-RT1 can be used to plan and execute ultra-long horizon tasks, with as many as 50 steps. 
+		The first task "Bring me the rice chips from the drawer" is executed in an office kitchen that the robot has never seen before.
 		</p>
 		<p style="test-align:center;">
 					<video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/demo_sequence_compressed.mp4" type="video/mp4">
+                       <source src="img/saycan_rt1_demo1_comp.mp4.mp4" type="video/mp4">
                    </video>		
         </p>
 		<p class="text-justify">
 
-         For the task "I just worked out, can you bring me a drink and a snack to recover?, the execution 
+         For the second task "Roses are red, violets are blue, bring me the rice chips from the drawer, and a napkin too." the execution 
 			and planning process are shown in the video below.
 		</p>
         <p style="test-align:center;">
 					<video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/demo_sequence2_compressed.mp4" type="video/mp4">
+                       <source src="img/saycan_rt1_demo2_comp.mp4" type="video/mp4">
                    </video>		
         </p>
         <p class="text-justify">
 
-         In the next example, we show SayCan is able to plan and execute a very long-horizon task involving 16 steps.
+         In the next example, we show SayCan is able to plan and execute a very long-horizon task involving 50+ steps.
 		</p>
         <p style="test-align:center;">
 					<video id="v0" width="100%" playsinline muted loop controls>
-                       <source src="img/demo_sequence3_compressed.mp4" type="video/mp4">
+                       <source src="img/saycan_rt1_demo3_comp.mp4" type="video/mp4">
                    </video>		
 
 	    </div>
@@ -337,7 +338,6 @@ On distractors and backgrounds, we find that RT-1 is quite robust, successfully 
                 </h3>
               We open source a version of SayCan that works with a simulated tabletop environment. <a href="https://github.com/google-research/google-research/tree/master/saycan">[tabletop saycan] </a>
               <p style="text-align:center;">
-                    <img src="img/open_source_tabletop.png" class="img-responsive" height="600px">
                 </p>
             </div>
         </div>
