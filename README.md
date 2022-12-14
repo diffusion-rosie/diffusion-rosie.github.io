@@ -1,1 +1,1 @@
-Website for Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
+Website for RT-1: Robotics Transformer for Real-World Control at Scale
