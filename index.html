@@ -72,7 +72,7 @@
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center">
-                <strong><font size="+4">Scaling Robot Learning with Semantically Imagined Experience</font></strong>
+                <strong><font size="+3">Scaling Robot Learning with Semantically Imagined Experience</font></strong>
             </h2>
         </div>
         <div class="row">
@@ -81,8 +81,8 @@
                 <br>
 			
 			<li>Tianhe Yu </li> <li> Ted Xiao </li> <li> Austin Stone </li> <li> Jonathan Tompson </li> <br>
-			<li>Anthony Brohan </li> <li> Su Wang </li> <li> Jaspiar Singh </li> <li> Clayton Tan </li> <li> Dee M </li> <li> Jodilyn Peralta </li> <br>
-			<li>Brian Ichter</li> <li> Karol Hausman</li> <li> Fei Xia</li>
+			<li>Anthony Brohan </li> <li> Su Wang </li> <li> Jaspiar Singh </li> <li> Clayton Tan </li> <li> Dee M </li> <br>
+			<li> Jodilyn Peralta </li>  <li>Brian Ichter</li> <li> Karol Hausman</li> <li> Fei Xia</li>
 		<br><br>
                     <a href="http://g.co/robotics">
                     <image src="img/rng-logo.png" height="37px"> </a>
@@ -98,7 +98,7 @@
                     <ul class="nav nav-pills nav-justified">
                         <li>
                             <a href="assets/rt1.pdf">
-                            <image src="img/paper_small2.png" height="60px">
+                            <image src="img/paper.png" height="60px">
                                 <h4><strong>Paper</strong></h4>
                             </a>
                         </li>
@@ -131,11 +131,14 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-               <div class="text-center">
-                    <div style="position:relative;padding-top:56.25%;">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/9XoABe-cCTU" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-                    </div>
-                </div>
+             
+                <p style="text-align:center;">
+        	    	<video id="v0" width="100%" playsinline autoplay muted loop>
+                       <source src="videos/coke_compressed.mp4" type="video/mp4">
+                   </video>
+                   We propose using text-guided diffusion models for data augmentation within the sphere of robot learning. These augmentations can produce highly convincing images suitable for learning downstream tasks. As demonstrated in the video, we can augment the background to virtually place the robot in arbitrary backgrounds guided by natural language.
+                </p>
+
                 <h3>
                     Abstract
                 </h3>
@@ -157,19 +160,15 @@ Through extensive real-world experiments, we show that manipulation policies tra
         </div>
 
 
-         <div class="row">
+        <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Citation 
+                    Video 
                 </h3>
-                <div class="form-group col-md-10 col-md-offset-1">
-                    <textarea id="bibtex" class="form-control" readonly>
-@inproceedings{rt12022arxiv,
-    title={RT-1: Robotics Transformer for Real-World Control at Scale},
-    author={Anthony	Brohan and  Noah Brown and  Justice Carbajal and  Yevgen Chebotar and  Joseph Dabis and  Chelsea Finn and  Keerthana Gopalakrishnan and  Karol Hausman and  Alex Herzog and  Jasmine Hsu and  Julian Ibarz and  Brian Ichter and  Alex Irpan and  Tomas Jackson and  Sally Jesmonth and  Nikhil Joshi and  Ryan Julian and  Dmitry Kalashnikov and  Yuheng Kuang and  Isabel Leal and  Kuang-Huei Lee and  Sergey Levine and  Yao Lu and  Utsav Malla and  Deeksha Manjunath and  Igor Mordatch and  Ofir Nachum and  Carolina Parada and  Jodilyn Peralta and  Emily Perez and  Karl Pertsch and  Jornell Quiambao and  Kanishka Rao and  Michael Ryoo and  Grecia Salazar and  Pannag Sanketi and  Kevin Sayed and  Jaspiar Singh and  Sumedh Sontakke and  Austin Stone and  Clayton Tan and  Huong Tran and  Vincent Vanhoucke and Steve Vega and  Quan Vuong and  Fei Xia and  Ted Xiao and  Peng Xu and  Sichun Xu and  Tianhe Yu and  Brianna Zitkovich},
-    booktitle={arXiv preprint arXiv:2212.06817},
-    year={2022}
-}</textarea>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/9XoABe-cCTU" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
                 </div>
             </div>
              
@@ -178,10 +177,155 @@ Through extensive real-world experiments, we show that manipulation policies tra
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
+                    Approach 
+                </h3>
+
+      
+        
+        
+                <p style="text-align:center;">
+                    <img src="img/approach.png" class="img-responsive">
+                </p>
+                
+                The proposed architecture of ROSIE. First, we localize the augmentation region with open
+vocabulary segmentation model. Second, we run Imagen Editor to perform text-guided image editing.
+Finally, we use the augmented data to train an RT-1 manipulation policy. Concretely, we explain
+ROSIE using the example shown in the figure as follows. We take the original episode with the
+instruction “place coke can into top drawer” and the goal is to add distractors in the opened drawer to
+improve the robustness of the policy. For each image in the episode, we detect the masks of the open
+drawer, the robot arm, and the coke can using our first step. We obtain the mask of the target region
+to add the distractor via subtracting the masks of the robot arm and the coke can that is picked up
+from the mask of the open drawer. Then, we generate our augmentation proposal leveraging LLMs. We run Imagen Editor with the augmentation text and the selected mask
+to generate a coke can in the drawer. We combine both the original episodes
+and the augmented episodes and perform policy training using multi-task imitation learning.
+
+<p style="text-align:center;">
+    <img src="img/example_generation.png" class="img-responsive">
+</p>
+
+We show visualizations of the episodes generated by ROSIE where we replace the regular
+tabletop in front of the robot with a dish rack, a marble sink and a wooden counter, which never
+appears in the training dataset.
+
+
+<p style="text-align:center;">
+    <video id="v0" width="100%" playsinline autoplay muted loop>
+       <source src="videos/chips_compressed.mp4" type="video/mp4">
+   </video>
+   </p>
+
+We can also pinpoint the augmentation to a small region of the image, as is shown in the video, where we 
+change the object in the drawer. Furthermore, we are able to augment in-hand objects, as is shown in the last
+part of this video.
+
+                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results 
+                </h3>
+
+                Concretely, we ask 3 research questions. 
+<ul>
+                <li>RQ1: Can we leverage semantic-aware augmentation to learn completely new skills only
+seen through diffusion models?</li>
+<li>RQ2: Can we leverage semantic-aware augmentation to make our policy more robust to
+visual distractors?</li>
+<li>RQ3: Can we leverage semantic-aware augmentation to bootstrap high-level embodied
+reasoning such as success detection?</li>
+</ul>
+
+<p style="text-align:center;">
+    <img src="img/result_table.png" class="img-responsive">
+</p>
+
+                In this table we show the full Experimental Results for ROSIE. The blue shaded results correspond to RQ1 and the
+orange shaded results correspond to RQ2. For each task family from top to the bottom, we performed
+evaluations with 50, 20, 16, 10, 80, 40, and 27 episodes respectively (243 episodes in total). ROSIE
+outperforms NoAug (pre-trained RT-1 policy) and InstructionAug (fine-tuned RT-1 policy with
+instruction augmentation) in both categories, suggesting that ROSIE can significantly improve
+the generalization to novel tasks and robustness w.r.t. different distractors. For RQ3 results please refer to our paper.
+            
+
+<p style="text-align:center;">
+    <video id="v0" width="100%" playsinline autoplay muted loop controls>
+       <source src="videos/sink2.mp4" type="video/mp4">
+   </video>
+   </p>
+
+   We show an episode augmented by ROSIE (left) where ROSIE inpaints the metal sink
+   onto the top drawer of the counter and a rollout of policy trained with both the original episodes
+   and the augmented episodes in a real kitchen with a metal sink. The policy successfully performs
+   the task “place pepsi can into sink” even if it is not trained on real data with sink before, suggesting
+   that leveraging the prior of the diffusion models trained with internet-scale data is able to improve
+   generalization of robotic learning in the real world.
+
+
+   <p style="text-align:center;">
+    <video id="v0" width="100%" playsinline autoplay muted loop controls>
+       <source src="videos/cloth2.mp4" type="video/mp4">
+   </video>
+   </p>
+
+   We show an augmented by ROSIE (left), where we inpaint the green rice chip bag into microfiber cloth 
+   of different colors, and the policies trained on the mixed dataset gets rolled out on the right. RT-1 trained
+   on mixed data has a higher chance of picking up the microfiber cloths.
+
+
+</div>
+        </div>
+
+
+
+
+         <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation 
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{yu2023scaling,
+    title={Scaling Robot Learning with Semantically Imagined Experience},
+    author={Tianhe Yu and Ted Xiao and Austin Stone and Jonathan Tompson and Anthony Brohan and Su Wang and Jaspiar Singh and Clayton Tan and Dee M and Jodilyn Peralta and Brian Ichter and Karol Hausman and Fei Xia},
+    booktitle={arXiv preprint arXiv:2212.06817},
+    year={2023}
+}</textarea>
+                </div>
+            </div>
+             
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Concurrent Works 
+                </h3>
+
+            <br>
+                Check out other awesome work that also leverages pretrained generative models for robot learning!
+                <br>
+                <a href="https://genaug.github.io/">GenAug: Retargeting behaviors to unseen situations via Generative Augmentation. by Chen et al.</a> shows using generative models to create “augmented” RGBD images for entirely different and realistic environments, and retarget behaviors to new scenarios.
+            
+                <br>
+                <a href="https://arxiv.org/abs/2212.05711">CACTI: A Framework for Scalable Multi-Task Multi-Scene Visual Imitation Learning by Mandi et al.</a> shows using generative models like stable diffusion to add distractors of the scene can robustify the multi-task policy learning.
+            
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
                     Acknowledgements
                 </h3>
                 <p class="text-justify">
-The authors would like to acknowledge Aleksandra Faust, Andy Christiansen, Chuyuan Fu, Daniel Kappler, David Rendleman, Eric Jang, Jessica Gomez, Jessica Lin, Jie Tan, Josh Weaver, Justin Boyd, Krzysztof Choromanski, Matthew Bennice, Mengyuan Yan, Mrinal Kalakrishnan, Nik Stewart, Paul Wohlhart, Peter Pastor, Pierre Sermanet, Wenlong Lu, Zhen Yu Song, Zhuo Xu, and the greater teams at Robotics at Google and Everyday Robots for their feedback and contributions.
+                    The authors would like to thank Pierre Sermanet for early discussions, and Alex Irpan, Quan Vuong, and Vincent Vanhoucke for feedbacks on an early draft.
+
                     <br><br>
                 The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
                 </p>
