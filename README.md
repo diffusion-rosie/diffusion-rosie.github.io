@@ -1,1 +1,1 @@
-Website for RT-1: Robotics Transformer for Real-World Control at Scale
+Website for Scaling Robot Learning with Semantically Imagined Experience
