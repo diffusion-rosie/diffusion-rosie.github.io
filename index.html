@@ -133,7 +133,7 @@
             <div class="col-md-8 col-md-offset-2">
              
                 <p style="text-align:center;">
-        	    	<video id="v0" width="100%" playsinline autoplay muted loop>
+        	    	<video id="v0" width="100%" playsinline autoplay muted loop controls>
                        <source src="videos/coke_compressed.mp4" type="video/mp4">
                    </video>
                    We propose using text-guided diffusion models for data augmentation within the sphere of robot learning. These augmentations can produce highly convincing images suitable for learning downstream tasks. As demonstrated in the video, we can augment the background to virtually place the robot in arbitrary backgrounds guided by natural language.
@@ -174,6 +174,53 @@ Through extensive real-world experiments, we show that manipulation policies tra
              
         </div>
 
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Introduction 
+                </h3>
+
+                <p>
+                    Though recent progress in robotic learning has shown the ability to learn impressive tasks,
+it has largely been limited to domains with few tasks and constrained environments. One of the
+fundamental reasons for these limitations is the lack of diverse data that covers not only a large
+variety of motor skills, but also a variety of objects and visual domains. This becomes apparent
+by observing more recent trends in robot learning research – when scaled to larger, more diverse
+datasets, current robotic learning algorithms have demonstrated promising signs towards more robust
+and performant robotic systems. However, this promise comes with an arduous challenge: it is
+extremely difficult to significantly scale-up varied, real-world data collected by robots as it requires
+either engineering-heavy autonomous schemes such as scripted policies or laborious human
+teleoperations. To put it into perspective, it took 17 months and 13 robots to collect 130k
+demonstrations in RT-1. While some works have proposed a potential solution to this conundrum by
+generating simulated data to satisfy these robot data needs, they come with their own set of challenges
+such as generating diverse and accurate enough simulations  or solving sim-to-real transfer.
+Can we find other ways to synthetically generate realistic diverse data without requiring realistic
+simulations or actual data collection on real robots?
+                </p>
+
+                <video id="v0" width="100%" playsinline autoplay muted loop controls>
+                    <source src="videos/intro.mp4" type="video/mp4">
+                </video>
+
+<p>
+        Recent text-to-image diffusion models, like DALL-E 2 or Imagen allow us to 
+        move beyond traditional data augmentation. First, these models can augment 
+        semantic aspects through natural language input. Second, they can generate images 
+        without ever having seen real-world examples. Third, they can modify an image without 
+        changing any meaningful parts.
+    </p>
+    <p>
+        These capabilities all allow us to create realistic scenes with objects that the robot has never interacted with or backgrounds that it's never seen before. This means that we can take internet-scale data and distill it into robot experience. ROSIE (Robot Learning with Semantically Imaged Experience), is the data augmentation approach proposed in this paper. It follows these steps: it parses instructions from humans and identifies portions of scenes which need to change. It then uses inpainting to modify only those areas, leaving the other elements intact. This results in new instructions and semantically-labelled data which teach the robot new tasks.
+    </p>
+    <p>
+        ROSIE was evaluated on a large set of robotic data. The data was used to train a robot policy, which was then able to perform new tasks and it also improved the ability to detect success, particularly in out-of-distribution (OOD) scenarios.
+    </p>
+</div>
+</div>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
@@ -181,11 +228,10 @@ Through extensive real-world experiments, we show that manipulation policies tra
                 </h3>
 
       
-        
-        
                 <p style="text-align:center;">
-                    <img src="img/approach.png" class="img-responsive">
+                    <img data-enlargable src="img/approach.png" class="img-responsive">
                 </p>
+
                 
                 The proposed architecture of ROSIE. First, we localize the augmentation region with open
 vocabulary segmentation model. Second, we run Imagen Editor to perform text-guided image editing.
@@ -200,7 +246,7 @@ to generate a coke can in the drawer. We combine both the original episodes
 and the augmented episodes and perform policy training using multi-task imitation learning.
 
 <p style="text-align:center;">
-    <img src="img/example_generation.png" class="img-responsive">
+    <img data-enlargable src="img/example_generation.png" class="img-responsive">
 </p>
 
 We show visualizations of the episodes generated by ROSIE where we replace the regular
@@ -209,7 +255,7 @@ appears in the training dataset.
 
 
 <p style="text-align:center;">
-    <video id="v0" width="100%" playsinline autoplay muted loop>
+    <video id="v0" width="100%" playsinline autoplay muted loop controls>
        <source src="videos/chips_compressed.mp4" type="video/mp4">
    </video>
    </p>
@@ -333,4 +379,22 @@ the generalization to novel tasks and robustness w.r.t. different distractors. F
         </div>
     </div>
 </body>
+
+<script>
+    $('img[data-enlargable]').addClass('img-enlargable').click(function(){
+var src = $(this).attr('src');
+$('<div>').css({
+background: 'RGBA(0,0,0,.5) url('+src+') no-repeat center',
+backgroundSize: 'contain',
+width:'100%', height:'100%',
+position:'fixed',
+zIndex:'10000',
+top:'0', left:'0',
+cursor: 'zoom-out'
+}).click(function(){
+$(this).remove();
+}).appendTo('body');
+});
+</script>
+
 </html>
