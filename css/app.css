@@ -228,7 +228,7 @@ div.compositional div.text p.selectable {
 
 div.compositional div.text span {
   padding-right: 10px;
-  color: rgb(80, 80, 80);
+  color: rgb(150, 150, 150);
   white-space: nowrap;
   cursor: pointer;
 }
@@ -241,9 +241,9 @@ div.compositional.lighter div.text span {
 }
 
 div.compositional div.text span.selected {
-  color: purple;
+  color: rgb(255, 106, 106);
 }
 
 div.compositional div.text span.selected:hover {
-  color: purple;
+  color: rgb(255, 106, 106);
 }
