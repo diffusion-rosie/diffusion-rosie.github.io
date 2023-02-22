@@ -97,7 +97,7 @@
                 <div class="col-md-4 col-md-offset-4 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-                            <a href="#">
+                            <a href="assets/rosie.pdf">
                             <image src="img/paper.png" height="60px">
                                 <h4><strong>Paper</strong></h4>
                             </a>
@@ -136,20 +136,22 @@
         	    	<video id="v0" width="100%" playsinline autoplay muted loop controls>
                        <source src="videos/coke_compressed.mp4" type="video/mp4">
                    </video>
-                   We propose using text-guided diffusion models for data augmentation within the sphere of robot learning. These augmentations can produce highly convincing images suitable for learning downstream tasks. As demonstrated in the video, we can augment the background to virtually place the robot in arbitrary backgrounds guided by natural language.
+                   We propose using text-guided diffusion models for data augmentation for robot learning. These augmentations can produce photorealistic images for learning downstream tasks such as manipulation.
                 </p>
 
                 <h3>
                     Abstract
                 </h3>
                 <p class="text-justify">
-Recent advances in robot learning have shown promise in enabling robots to perform a variety of manipulation tasks and generalize to novel scenarios. 
-One of the key contributing factors to this progress is the scale of robot data used to train the models.
-To obtain large-scale datasets, prior approaches have relied on either demonstrations requiring high human involvement or engineering-heavy autonomous data collection schemes, both of which being challenging in scaling up the space of new tasks and skills needed for building generalist robots. 
-To mitigate this issue, we propose to take an alternative route and leverage text-to-image foundation models widely used in computer vision and natural language processing to obtain meaningful data for robot learning without requiring additional robot data. 
-Specifically, we make use of the state of the art text-to-image diffusion models and perform aggressive data augmentation on top of our existing robotic manipulation datasets via inpainting of various unseen objects for manipulation, backgrounds, and distractors with pure text guidance. 
-Through extensive real-world experiments, we show that manipulation policies trained on the augmented data are able to solve completely unseen tasks with new objects and can behave more robustly w.r.t. novel distractors. In addition, we also find that we can improve the robustness and generalization of high-level robot learning tasks such as success detection through training with the diffusion-based data augmentation.
-		</p>
+                    Recent advances in robot learning have shown promise in enabling robots to perform a variety of manipulation tasks and generalize to novel scenarios. 
+                    One of the key contributing factors to this progress is the scale of robot data used to train the models.
+                    To obtain large-scale datasets, prior approaches have relied on either demonstrations requiring high human involvement or engineering-heavy autonomous data collection schemes, both of which are challenging to scale. 
+                    To mitigate this issue, we propose an alternative route and leverage text-to-image foundation models widely used in computer vision and natural language processing to obtain meaningful data for robot learning without requiring additional robot data. We term our method Scaling <b>RO</b>bot Learning with <b>S</b>emantically <b>I</b>magined <b>E</b>xperience (<b>ROSIE</b>)                .
+                    Specifically, we make use of the state of the art text-to-image diffusion models and perform aggressive data augmentation on top of our existing robotic manipulation datasets via inpainting various unseen objects for manipulation, backgrounds, and distractors with text guidance. 
+                    Through extensive real-world experiments, we show that manipulation policies trained on data augmented this way are able to solve completely unseen tasks with new objects and can behave more robustly w.r.t. novel distractors. In addition, we find that we can improve the robustness and
+                     generalization of high-level robot learning tasks such as success detection through training with the diffusion-based data augmentation.
+
+</p>
 <!--              <p style="text-align:center;">
         	    	<video id="v0" width="100%" playsinline autoplay muted loop>
                        <source src="img/RT1-video.mp4" type="video/mp4">
@@ -399,8 +401,7 @@ the generalization to novel tasks and robustness w.r.t. different distractors. F
                     Acknowledgements
                 </h3>
                 <p class="text-justify">
-                    The authors would like to thank Pierre Sermanet for early discussions, and Alex Irpan, Quan Vuong, and Vincent Vanhoucke for feedbacks on an early draft.
-
+                    We would like to acknowledge Sharath Maddineni, Brianna Zitkovich, Vincent Vanhoucke, KanishkaRao, Quan Vuong, Alex Irpan, Sarah Laszlo, Bob Wei, Sean Kirmani, Pierre Sermanet and the greaterteams at Robotics at Google for their feedback and contributions.
                     <br><br>
                 The website template was borrowed from <a href="http://jonbarron.info/">Jon Barron</a>.
                 </p>
