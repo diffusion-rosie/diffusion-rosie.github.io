@@ -322,11 +322,46 @@ the generalization to novel tasks and robustness w.r.t. different distractors. F
    on mixed data has a higher chance of picking up the microfiber cloths.
 
 
+    </div>
 </div>
-        </div>
 
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3>
+            Demo 
+        </h3>
+<div class="compositional">
+    <div class="image">
+        <div class="col-md-6">
 
+      <img src="./img/imagen/original.gif">
+      </div>
+      <div class="col-md-6">
 
+      <img src="./img/imagen/blue_solid_none.gif" id="compositional_animals_img">
+      </div>
+    </div>
+    <div class="text" id="compositional_animals">
+      <h3>Click on a word below and Imagen!</h3>
+      A robot arm picking up a
+      <p class="selectable left"><span class="selected">blue</span> <span>red</span></p> 
+      <p class="selectable left"><span class="selected">solid</span> <span>striped</span> microfiber cloth</p>
+      <p class="selectable left">from a <span >counter</span> <span>sink</span> <span class="selected">none</span></p>
+      <p class="selectable left">full of <span class="selected">bowls</span> <span>fruits</span></p>
+
+      <!-- <p class="selectable left"><span class="selected">A photo of a</span> <span>An oil painting of a</span></p><p>
+      </p>
+      <p class="selectable left"><span class="selected">fuzzy panda</span> <span class="">British Shorthair cat</span> <span class="">Persian cat</span> <span>Shiba Inu dog</span> <span class="">raccoon</span></p><p>
+      </p>
+      <p class="selectable left"><span class="">wearing a cowboy hat and</span> <span class="selected">wearing a sunglasses and</span></p>
+      <p class="selectable left"><span class="">red shirt</span> <span class="selected">black leather jacket</span></p>
+      <p class="selectable left"><span class="">playing a guitar</span> <span class="">riding a bike</span> <span class="selected">skateboarding</span></p>
+      <p class="selectable left"><span class="">in a garden.</span> <span class="selected">on a beach.</span> <span class="">on top of a mountain.</span></p> -->
+    </div>
+  </div>
+  
+  </div>
+  </div>
 
          <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -379,6 +414,92 @@ the generalization to novel tasks and robustness w.r.t. different distractors. F
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    compositionalAnimalsManualClicked = false;
+    compositionalMadeOfManualClicked = false;
+    var root = '.';
+    if (window.location.host.includes('.appspot.com') || window.location.host.includes('research.google')) {
+            root = 'https://gweb-research-imagen.web.app';
+    }
+
+    function updateComposition(name) {
+      var compositionSpans = $(name + " p span.selected").map(function() {
+        return $(this).text();
+      }).get();
+      var compositionText = "";
+      for (var compositionSpansIdx = 0; compositionSpansIdx < compositionSpans.length; ++compositionSpansIdx) {
+        if (compositionSpansIdx > 0) {
+          compositionText += "_";
+        }
+        compositionText += compositionSpans[compositionSpansIdx];
+        if (compositionSpans[compositionSpansIdx] == "none") {
+            break;
+        }
+      }
+      console.info(compositionText);
+      if (name == "#compositional_madeof") {
+        //randImgIdx = Math.floor(Math.random() * 8) + 1;
+        //$(name + "_img").attr("src", "./img/imagen/" + compositionText + ".gif");
+      } else if (name == "#compositional_animals") {
+        randImgIdx = Math.floor(Math.random() * 4);
+        $(name + "_img").attr("src",  "./img/imagen/" + compositionText + ".gif");
+      }
+    }
+
+    function randomComposition(name) {
+      if (name == "#compositional_animals" && compositionalAnimalsManualClicked == true) {
+        compositionalAnimalsManualClicked = false;
+        //setTimeout(randomComposition, 4000, name);
+        return;
+      } else if (name == "#compositional_madeof" &&
+                 compositionalMadeOfManualClicked == true) {
+        compositionalMadeOfManualClicked = false;
+        //setTimeout(randomComposition, 4000, name);
+        return;
+      }
+
+      var compositionPs = $(name + " p.selectable").toArray();
+      var compositionOptions = [];
+      for (var i = 0; i < compositionPs.length; ++i) {
+        var compositionSpanSelected = $(compositionPs[i]).children("span.selected");
+        var compositionSpans = $(compositionPs[i]).children("span").not("span.selected").toArray();
+        for (var j = 0; j < compositionSpans.length; ++j) {
+          compositionOption = {
+            "p": compositionPs[i],
+            "span_selected": compositionSpanSelected,
+            "span_option": $(compositionSpans[j])
+          };
+          compositionOptions.push(compositionOption);
+        }
+      }
+
+      randomCompositionOptionIdx = Math.floor(Math.random() * compositionOptions.length);
+      randomCompositionOption = compositionOptions[randomCompositionOptionIdx];
+
+      randomCompositionOption.span_selected.toggleClass("selected");
+      randomCompositionOption.span_option.toggleClass("selected");
+
+      updateComposition(name);
+      //setTimeout(randomComposition, 4000, name);
+    }
+
+    $("#compositional_animals p.selectable span").click(function() {
+      $(this).siblings().removeClass("selected");
+      $(this).addClass("selected");
+      updateComposition("#compositional_animals");
+      compositionalAnimalsManualClicked = true;
+    });
+
+    $("#compositional_madeof p.selectable span").click(function() {
+      $(this).siblings().removeClass("selected");
+      $(this).addClass("selected");
+      updateComposition("#compositional_madeof");
+      compositionalMadeOfManualClicked = true;
+    });
+
+    //setTimeout(randomComposition, 2000, "#compositional_animals");
+    //setTimeout(randomComposition, 4000, "#compositional_madeof");
+  </script>
 
 <script>
     $('img[data-enlargable]').addClass('img-enlargable').click(function(){

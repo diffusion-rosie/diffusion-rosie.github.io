@@ -160,3 +160,90 @@ span.highlight {
 .img-responsive {
     margin: 0 auto;
 }
+
+
+div.compositional div.image {
+  width: 100%;
+  margin: 0;
+}
+
+div.compositional div.text {
+  width: 100%;
+  padding: 25px;
+}
+
+div.compositional div.text h3 {
+  margin: 0;
+  padding: 0 0 25px 0;
+  font-size: 1em;
+}
+
+div.compositional div.text h1.description {
+  font-size: 1.5em;
+  padding: 0;
+}
+
+div.compositional div.text p.description {
+  font-size: 1em;
+  padding-bottom: 25px;
+}
+
+div.compositional div.text p.left {
+  padding-right: 25px;
+}
+
+div.compositional div.text p.right {
+  padding-left: 25px;
+  text-align: right;
+}
+
+div.compositional div.text span {
+  font-size: 1em;
+}
+
+div.compositional {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 0;
+  margin: 0;
+}
+
+div.compositional div.image img {
+  width: 100%;
+  margin: 0;
+}
+
+div.compositional div.text p {
+  margin: 0 0 10px 0;
+  font-family: monospace;
+}
+
+div.compositional div.text p.selectable {
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+div.compositional div.text span {
+  padding-right: 10px;
+  color: rgb(80, 80, 80);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+div.compositional.lighter div.text span {
+  padding-right: 10px;
+  color: rgb(106, 106, 106);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+div.compositional div.text span.selected {
+  color: purple;
+}
+
+div.compositional div.text span.selected:hover {
+  color: purple;
+}
